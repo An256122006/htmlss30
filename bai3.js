@@ -98,4 +98,65 @@ function buyPhone() {
     } else {
         console.log("san pham khong co trong cua hang");
     }
+};
+function checkout() {
+    let sum = 0;
+    if (cart.length > 0) {
+        cart.forEach(function (arr) {
+            return sum += arr.quantity * arr.price;
+        });
+        console.log(sum);
+    } else {
+        console.log(sum);
+    }
+}
+function sortByPrice() {
+    let choice2;
+    do {
+        choice2 = +prompt(`
+            1.tang dan.
+            2.giam dan.
+            3.thoat.
+            `);
+        switch (choice2) {
+            case 1:
+                phone.sort((a, b) => a.price - b.price);
+                phone.forEach(function (arr) {
+                    console.log("=========================================");
+                    console.log(arr.id);
+                    console.log(arr.name);
+                    console.log(arr.price);
+                    console.log(arr.quantity);
+                    console.log(arr.company);
+                    console.log("=========================================");
+                });
+                break;
+            case 2:
+                phone.sort((a, b) => b.price - a.price);
+                phone.forEach(function (arr) {
+                    console.log("=========================================");
+                    console.log(arr.id);
+                    console.log(arr.name);
+                    console.log(arr.price);
+                    console.log(arr.quantity);
+                    console.log(arr.company);
+                    console.log("=========================================");
+                });
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        };
+    } while (choice2 != 3);
+};
+function totalInventoryValue(){
+    let total = phone.reduce((sum, phone) => sum + phone.price * phone.quantity, 0);
+    console.log(total);
+};
+function totalByCompany(){
+    phone.forEach(function(arr){
+        console.log(`${arr.company}-${arr.quantity}`);
+        console.log("==============================");
+    })
 }
